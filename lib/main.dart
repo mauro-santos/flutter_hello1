@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.blue
+        primaryColor: Colors.blue,
       ),
       home: HomePage(),
     );
@@ -20,13 +20,28 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hello Flutter"),
+        title: Text(
+          "Hello Flutter",
+        ),
         centerTitle: true,
       ),
       body: Container(
         color: Colors.white,
+        child: Center(
+          child: Text(
+            "Hello World",
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              decoration: TextDecoration.underline,
+              decorationColor: Colors.blue,
+              decorationStyle: TextDecorationStyle.double,
+            ),
+          ),
+        ),
       ),
     );
   }
 }
-
