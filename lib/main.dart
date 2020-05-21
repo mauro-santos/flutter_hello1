@@ -10,14 +10,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: Colors.blue
       ),
-      home: home(),
+      home: HomePage(),
     );
   }
+}
 
-  home(){
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Hello Flutter"),
+        centerTitle: true,
       ),
       body: Container(
         color: Colors.white,
@@ -25,3 +29,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
