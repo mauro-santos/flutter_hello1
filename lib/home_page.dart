@@ -16,15 +16,42 @@ class HomePage extends StatelessWidget {
 
   _body() {
     return Container(
-      margin: EdgeInsets.only(left: 10, top: 10),
       color: Colors.white,
-      child: _text(),
+      //child: Center(
+      child: SizedBox.expand(
+        child: _img(),
+      ),
+    );
+  }
+
+  _listImg() {
+    return ListView(
+      children: <Widget>[
+        _img(),
+        _img(),
+        _img(),
+      ],
+    );
+  }
+
+  _img() {
+    /*
+    return Image.network(
+      //"https://statig1.akamaized.net/bancodeimagens/bm/s7/6b/bms76blg2zaea6p7625cszwjp.jpg",
+      "https://tudosobrecachorros.com.br/wp-content/uploads/2013/02/pastor_alemao_2.jpg",
+    );
+    */
+    return Image.asset(
+      "assets/images/dog5.png",
+      //width: 300,
+      //height: 300,
+      fit: BoxFit.cover,
     );
   }
 
   _text() {
     return Text(
-      "Hello World!",
+      "Hello World",
       style: TextStyle(
         fontSize: 30,
         color: Colors.blue,
