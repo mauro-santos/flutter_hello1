@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,10 +19,32 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Colors.white,
       //child: Center(
-      child: SizedBox.expand(
-        child: _img(),
+      //child: SizedBox.expand(
+      child: Center(
+        child: _button(),
       ),
     );
+  }
+
+  _button() {
+    return RaisedButton(
+      color: Colors.blue,
+      child: Text(
+        "OK",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 30,
+        ),
+      ),
+      //onPressed: () => _onClickOk(),
+      onPressed: () {
+        _onClickOk();
+      },
+    );
+  }
+
+  void _onClickOk() {
+    print("Clicou no botão!");
   }
 
   _listImg() {
