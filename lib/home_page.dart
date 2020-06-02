@@ -11,26 +11,18 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: _body(context),
+      body: _body(),
     );
   }
 
-  _body(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
+  _body() {
     return Container(
-      //width: double.infinity,
-      //height: double.infinity,
-      width: size.width,
-      //height: size.height,
       color: Colors.yellow,
       child: Column(
-        mainAxisSize: MainAxisSize.max,
-        //mainAxisAlignment: MainAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          _button(),
-          _button(),
+          _text(),
+          _img(),
           _button(),
         ],
       ),
@@ -47,7 +39,6 @@ class HomePage extends StatelessWidget {
           fontSize: 30,
         ),
       ),
-      //onPressed: () => _onClickOk(),
       onPressed: () {
         _onClickOk();
       },
@@ -69,16 +60,8 @@ class HomePage extends StatelessWidget {
   }
 
   _img() {
-    /*
-    return Image.network(
-      //"https://statig1.akamaized.net/bancodeimagens/bm/s7/6b/bms76blg2zaea6p7625cszwjp.jpg",
-      "https://tudosobrecachorros.com.br/wp-content/uploads/2013/02/pastor_alemao_2.jpg",
-    );
-    */
     return Image.asset(
-      "assets/images/dog5.png",
-      //width: 300,
-      //height: 300,
+      "assets/images/dog1.png",
       fit: BoxFit.cover,
     );
   }
