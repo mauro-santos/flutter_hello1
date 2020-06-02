@@ -16,15 +16,20 @@ class HomePage extends StatelessWidget {
   }
 
   _body() {
+    //return Padding(
     return Container(
-      color: Colors.yellow,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _text(),
-          _pageView(),
-          _buttons(),
-        ],
+      color: Colors.green,
+      padding: const EdgeInsets.all(16.0),
+      child: Container(
+        color: Colors.yellow,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _text(),
+            _pageView(),
+            _buttons(),
+          ],
+        ),
       ),
     );
   }
@@ -32,6 +37,7 @@ class HomePage extends StatelessWidget {
   Container _pageView() {
     return Container(
       height: 300,
+      margin: EdgeInsets.only(top: 20, bottom: 20),
       child: PageView(
         children: <Widget>[
           _img("assets/images/dog1.png"),
@@ -100,12 +106,9 @@ class HomePage extends StatelessWidget {
   }
 
   _img(String img) {
-    return Container(
-      margin: EdgeInsets.all(20),
-      child: Image.asset(
-        img,
-        fit: BoxFit.cover,
-      ),
+    return Image.asset(
+      img,
+      fit: BoxFit.cover,
     );
   }
 
