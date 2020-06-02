@@ -11,17 +11,28 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: _body(),
+      body: _body(context),
     );
   }
 
-  _body() {
+  _body(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Container(
-      color: Colors.white,
-      //child: Center(
-      //child: SizedBox.expand(
-      child: Center(
-        child: _button(),
+      //width: double.infinity,
+      //height: double.infinity,
+      width: size.width,
+      //height: size.height,
+      color: Colors.yellow,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        //mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          _button(),
+          _button(),
+          _button(),
+        ],
       ),
     );
   }
