@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterhello1/pages/hello_page1.dart';
+import 'package:flutterhello1/pages/hello_page2.dart';
+import 'package:flutterhello1/pages/hello_page3.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -11,33 +14,20 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: _body(),
+      body: _body(context),
     );
   }
 
-  _body() {
-    //return Padding(
-    return SingleChildScrollView(
-      //padding: const EdgeInsets.all(16.0),
-      child: Container(
-        color: Colors.yellow,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _text(),
-            _pageView(),
-            _buttons(),
-            _text(),
-            _pageView(),
-            _buttons(),
-            _text(),
-            _pageView(),
-            _buttons(),
-            _text(),
-            _pageView(),
-            _buttons(),
-          ],
-        ),
+  _body(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _text(),
+          _pageView(),
+          _buttons(context),
+        ],
       ),
     );
   }
@@ -58,30 +48,48 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _buttons() {
+  _buttons(BuildContext context) {
     return Column(
       children: <Widget>[
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button("ListView"),
-            _button("Page 2"),
-            _button("Page 3"),
+            _button(context, "ListView", () => _onClickNavigator(context, HelloPage1())),
+            _button(context, "Page 2", () => _onClickNavigator(context, HelloPage2())),
+            _button(context, "Page 3", () => _onClickNavigator(context, HelloPage3())),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            _button("Snack"),
-            _button("Dialog"),
-            _button("Toast"),
+            _button(context, "Snack", _onClickSnack),
+            _button(context, "Dialog", _onClickDialog),
+            _button(context, "Toast", _onClickToast),
           ],
         ),
       ],
     );
   }
 
-  _button(String text) {
+  void _onClickNavigator(BuildContext context, Widget page) {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return page;
+    }));
+  }
+
+  _onClickSnack() {
+    print("Clique em Snack!");
+  }
+
+  _onClickDialog() {
+    print("Clique em Dialog!");
+  }
+
+  _onClickToast() {
+    print("Clique em Toast!");
+  }
+
+  _button(BuildContext context, String text, Function onPressed) {
     return RaisedButton(
       color: Colors.blue,
       child: Text(
@@ -91,14 +99,8 @@ class HomePage extends StatelessWidget {
           fontSize: 20,
         ),
       ),
-      onPressed: () {
-        _onClickOk();
-      },
+      onPressed: onPressed,
     );
-  }
-
-  void _onClickOk() {
-    print("Clicou no botão!");
   }
 
   _listImg() {
