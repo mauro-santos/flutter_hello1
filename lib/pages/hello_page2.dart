@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterhello1/utils/nav.dart';
+import 'package:flutterhello1/widgets/blue_button.dart';
 
 class HelloPage2 extends StatelessWidget {
   @override
@@ -15,21 +17,15 @@ class HelloPage2 extends StatelessWidget {
 
   _body(BuildContext context) {
     return Center(
-      child: RaisedButton(
-        color: Colors.blue,
-        child: Text(
-          "Voltar",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-          ),
-        ),
+      child: BlueButton(
+        "Voltar",
         onPressed: () => _onClickVoltar(context),
+        color: Colors.red,
       ),
     );
   }
 
   _onClickVoltar(BuildContext context) {
-    Navigator.pop(context, "Tela 2");
+    pop(context, "Tela 2");
   }
 }
