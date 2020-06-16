@@ -21,32 +21,29 @@ class HomePage extends StatelessWidget {
   }
 
   _body(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _text(),
-          _pageView(),
-          _buttons(context),
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        Expanded(
+          flex: 7,
+          child: _pageView(),
+        ),
+        Expanded(
+          flex: 3,
+          child: _pageView(),
+        )
+      ],
     );
   }
 
-  Container _pageView() {
-    return Container(
-      height: 300,
-      margin: EdgeInsets.only(top: 20, bottom: 20),
-      child: PageView(
-        children: <Widget>[
-          _img("assets/images/dog1.png"),
-          _img("assets/images/dog2.png"),
-          _img("assets/images/dog3.png"),
-          _img("assets/images/dog4.png"),
-          _img("assets/images/dog5.png"),
-        ],
-      ),
+  _pageView() {
+    return PageView(
+      children: <Widget>[
+        _img("assets/images/dog1.png"),
+        _img("assets/images/dog2.png"),
+        _img("assets/images/dog3.png"),
+        _img("assets/images/dog4.png"),
+        _img("assets/images/dog5.png"),
+      ],
     );
   }
 
