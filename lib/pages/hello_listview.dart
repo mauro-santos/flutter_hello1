@@ -15,19 +15,21 @@ class HelloListView extends StatelessWidget {
   }
 
   _body() {
+    List<Image> imgs = [
+      _img("assets/images/dog1.png"),
+      _img("assets/images/dog2.png"),
+      _img("assets/images/dog3.png"),
+      _img("assets/images/dog4.png"),
+      _img("assets/images/dog5.png"),
+    ];
+
     return ListView(
-      itemExtent: 350,
-      children: <Widget>[
-        _img("assets/images/dog1.png"),
-        _img("assets/images/dog2.png"),
-        _img("assets/images/dog3.png"),
-        _img("assets/images/dog4.png"),
-        _img("assets/images/dog5.png"),
-      ],
+      itemExtent: 350, // Aplicar a mesma dimensão de altura para todos os itens do lista.
+      children: imgs,
     );
   }
 
-  _img(String img) {
+  Image _img(String img) {
     return Image.asset(
       img,
       fit: BoxFit.cover,
