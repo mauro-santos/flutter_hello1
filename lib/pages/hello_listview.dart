@@ -23,9 +23,12 @@ class HelloListView extends StatelessWidget {
       _img("assets/images/dog5.png"),
     ];
 
-    return ListView(
-      itemExtent: 350, // Aplicar a mesma dimensão de altura para todos os itens do lista.
-      children: imgs,
+    return ListView.builder(
+      itemCount: imgs.length,
+      itemExtent: 300,
+      itemBuilder: (BuildContext context, int index) {
+        return imgs[index];
+      },
     );
   }
 
