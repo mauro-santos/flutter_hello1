@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -15,7 +14,7 @@ class HelloListView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ListView",
+          "GridView",
         ),
         centerTitle: true,
       ),
@@ -32,9 +31,9 @@ class HelloListView extends StatelessWidget {
       Dog("Pastor", "assets/images/dog5.png"),
     ];
 
-    return ListView.builder(
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemCount: dogs.length,
-      itemExtent: 300,
       itemBuilder: (BuildContext context, int index) {
         Dog dog = dogs[index];
 
