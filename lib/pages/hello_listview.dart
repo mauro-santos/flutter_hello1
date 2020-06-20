@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class Dog {
   String nome;
@@ -39,19 +41,22 @@ class HelloListView extends StatelessWidget {
         return Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            /*SizedBox.expand(
-              child: _img(dog.foto),
-            ),*/
             _img(dog.foto),
-            //Align(
-            Container(
-              //alignment: Alignment(1, 1),
-              alignment: Alignment.bottomRight,
-              child: Text(
-                dog.nome,
-                style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.white,
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                margin: EdgeInsets.all(12),
+                padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.black45,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Text(
+                  dog.nome,
+                  style: TextStyle(
+                    fontSize: 26,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             )
