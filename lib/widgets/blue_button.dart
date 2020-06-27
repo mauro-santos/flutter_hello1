@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BlueButton extends StatelessWidget {
-  String text;
-  Function onPressed;
-  Color color;
+  final String text;
+  final Function onPressed;
+  final Color color;
 
   BlueButton(this.text, {@required this.onPressed, this.color = Colors.blue});
 

@@ -16,11 +16,11 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: _body(context),
+      body: _body(),
     );
   }
 
-  _body(BuildContext context) {
+  _body() {
     return Container(
       color: Colors.white,
       child: Column(
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           _text(),
           _pageView(),
-          _buttons(context),
+          _buttons(),
         ],
       ),
     );
@@ -50,26 +50,30 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _buttons(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  _buttons() {
+    return Builder(
+      builder: (BuildContext context) {
+        return Column(
           children: <Widget>[
-            BlueButton("ListView", onPressed: () => _onClickNavigator(context, HelloListView())),
-            BlueButton("Page 2", onPressed: () => _onClickNavigator(context, HelloPage2())),
-            BlueButton("Page 3", onPressed: () => _onClickNavigator(context, HelloPage3())),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton("ListView", onPressed: () => _onClickNavigator(context, HelloListView())),
+                BlueButton("Page 2", onPressed: () => _onClickNavigator(context, HelloPage2())),
+                BlueButton("Page 3", onPressed: () => _onClickNavigator(context, HelloPage3())),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                BlueButton("Snack", onPressed: () => _onClickSnack(context)),
+                BlueButton("Dialog", onPressed: _onClickDialog),
+                BlueButton("Toast", onPressed: _onClickToast),
+              ],
+            ),
           ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            BlueButton("Snack", onPressed: _onClickSnack),
-            BlueButton("Dialog", onPressed: _onClickDialog),
-            BlueButton("Toast", onPressed: _onClickToast),
-          ],
-        ),
-      ],
+        );
+      },
     );
   }
 
@@ -79,8 +83,19 @@ class HomePage extends StatelessWidget {
     print(">> ${s.toUpperCase()}");
   }
 
-  _onClickSnack() {
-    print("Clique em Snack!");
+  _onClickSnack(BuildContext context) {
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        content: Text("Olá Flutter"),
+        action: SnackBarAction(
+          textColor: Colors.yellow,
+          label: "OK",
+          onPressed: () {
+            print("OK!");
+          },
+        ),
+      ),
+    );
   }
 
   _onClickDialog() {
@@ -89,18 +104,6 @@ class HomePage extends StatelessWidget {
 
   _onClickToast() {
     print("Clique em Toast!");
-  }
-
-  _listImg() {
-    return ListView(
-      children: <Widget>[
-        _img("assets/images/dog1.png"),
-        _img("assets/images/dog2.png"),
-        _img("assets/images/dog3.png"),
-        _img("assets/images/dog4.png"),
-        _img("assets/images/dog5.png"),
-      ],
-    );
   }
 
   _img(String img) {

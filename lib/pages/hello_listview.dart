@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutterhello1/pages/dog_page.dart';
+import 'package:flutterhello1/utils/nav.dart';
 
 class Dog {
   String nome;
@@ -63,7 +65,9 @@ class _HelloListViewState extends State<HelloListView> {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: dogs.length,
         itemBuilder: (BuildContext context, int index) {
-          return _itemView(dogs, index);
+          Dog dog = dogs[index];
+
+          return _itemView(dog);
         },
       );
     else
@@ -71,37 +75,42 @@ class _HelloListViewState extends State<HelloListView> {
         itemExtent: 350,
         itemCount: dogs.length,
         itemBuilder: (BuildContext context, int index) {
-          return _itemView(dogs, index);
+          Dog dog = dogs[index];
+
+          return _itemView(dog);
         },
       );
   }
 
-  _itemView(List<Dog> dogs, int index) {
-    Dog dog = dogs[index];
-
-    return Stack(
-      fit: StackFit.expand,
-      children: <Widget>[
-        _img(dog.foto),
-        Align(
-          alignment: Alignment.topLeft,
-          child: Container(
-            margin: EdgeInsets.all(12),
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: Colors.black45,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Text(
-              dog.nome,
-              style: TextStyle(
-                fontSize: 26,
-                color: Colors.white,
+  _itemView(Dog dog) {
+    return GestureDetector(
+      onTap: () {
+        push(context, DogPage(dog));
+      },
+      child: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          _img(dog.foto),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Container(
+              margin: EdgeInsets.all(12),
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.black45,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Text(
+                dog.nome,
+                style: TextStyle(
+                  fontSize: 26,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 
