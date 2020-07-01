@@ -5,6 +5,7 @@ import 'package:flutterhello1/pages/hello_page2.dart';
 import 'package:flutterhello1/pages/hello_page3.dart';
 import 'package:flutterhello1/utils/nav.dart';
 import 'package:flutterhello1/widgets/blue_button.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -128,7 +129,15 @@ class HomePage extends StatelessWidget {
   }
 
   _onClickToast() {
-    print("Clique em Toast!");
+    Fluttertoast.showToast(
+      msg: "Flutter é muito legal",
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 5,
+      backgroundColor: Colors.green,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
   }
 
   _img(String img) {
