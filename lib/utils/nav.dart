@@ -6,6 +6,6 @@ Future push(BuildContext context, Widget page) {
   }));
 }
 
-pop(BuildContext context, String text) {
-  Navigator.pop(context, text);
+pop(BuildContext context, {String text}) {
+  text != null ? Navigator.pop(context, text) : Navigator.pop(context);
 }

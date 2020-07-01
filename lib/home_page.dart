@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 BlueButton("Snack", onPressed: () => _onClickSnack(context)),
-                BlueButton("Dialog", onPressed: _onClickDialog),
+                BlueButton("Dialog", onPressed: () => _onClickDialog(context)),
                 BlueButton("Toast", onPressed: _onClickToast),
               ],
             ),
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
   void _onClickNavigator(BuildContext context, Widget page) async {
     String s = await push(context, page);
 
-    print(">> ${s.toUpperCase()}");
+    if (s != null) print(">> ${s.toUpperCase()}");
   }
 
   _onClickSnack(BuildContext context) {
@@ -98,8 +98,33 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _onClickDialog() {
-    print("Clique em Dialog!");
+  _onClickDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              title: Text("Flutter é muito legal"),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("CANCELAR"),
+                  onPressed: () {
+                    pop(context);
+                  },
+                ),
+                FlatButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    pop(context);
+                    print("OK !!!");
+                  },
+                )
+              ],
+            ),
+          );
+        });
   }
 
   _onClickToast() {

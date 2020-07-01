@@ -26,6 +26,6 @@ class HelloPage2 extends StatelessWidget {
   }
 
   _onClickVoltar(BuildContext context) {
-    pop(context, "Tela 2");
+    pop(context, text: "Tela 2");
   }
 }
