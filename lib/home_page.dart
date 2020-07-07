@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterhello1/drawer_list.dart';
 import 'package:flutterhello1/pages/hello_listview.dart';
 import 'package:flutterhello1/pages/hello_page2.dart';
 import 'package:flutterhello1/pages/hello_page3.dart';
@@ -18,27 +19,13 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: _body(),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              _onClickFab();
-            },
-          ),
-          SizedBox(
-            width: 8,
-            height: 8,
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.favorite),
-            onPressed: () {
-              _onClickFab();
-            },
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          _onClickFab();
+        },
       ),
+      drawer: DrawerList(),
     );
   }
 
